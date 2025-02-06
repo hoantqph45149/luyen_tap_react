@@ -39,7 +39,7 @@ const TabShowtime = () => {
         {data.map((item) => (
           <li
             key={item.day_id}
-            className={`text-center px-6 py-2 border-gray-300 text-lg font-extrabold transition-colors cursor-pointer ${
+            className={`text-center px-6 py-2 text-lg font-extrabold transition-colors cursor-pointer ${
               activeTab === item.day_id
                 ? "text-blue-500 border-b-2 border-blue-500"
                 : "text-gray-600"

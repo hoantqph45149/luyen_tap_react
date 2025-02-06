@@ -56,7 +56,7 @@ const Banner = () => {
             <span
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`bg-gray-300 cursor-pointer rounded-full transition-all duration-400 ease-in-out ${
+              className={`bg-[#6F7A7C] cursor-pointer rounded-full transition-all duration-400 ease-in-out ${
                 index === currentSlide ? "w-5 h-5" : "w-3 h-3"
               }`}
             ></span>
