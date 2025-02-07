@@ -3,10 +3,15 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        oswald: ["Oswald"],
+        poppins: ["Poppins", "sans-serif"],
+        lato: ["Lato", "sans-serif"],
+      },
       keyframes: {
         ping: {
           "0%": { transform: "scale(1)", opacity: "0" },
-          "30%": { opacity: "1" },
+          "30%": { opacity: "0.5" },
           "100%": { transform: "scale(1.3)", opacity: "0" },
         },
       },

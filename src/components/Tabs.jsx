@@ -11,21 +11,24 @@ export default function Tabs({ tabs, defaultTab, onTabChange }) {
   return (
     <div className="w-full">
       {/* Thanh Tabs */}
-      <ul className="flex flex-col md:flex-row justify-center items-center">
-        {tabs.map((tab) => (
-          <li
-            key={tab.label}
-            className={`w-[240px] md:w-auto text-center px-6 py-2 border-gray-300 text-lg font-semibold transition-colors cursor-pointer ${
-              activeTab === tab.label
-                ? "bg-blue-500 text-white border-b-0"
-                : "text-gray-600 bg-slate-200"
-            } `}
-            onClick={() => handleTabClick(tab)}
-          >
-            {tab.label}
-          </li>
-        ))}
-      </ul>
+      <div className="text-center">
+        <ul className="inline-flex justify-center items-center font-oswald border-b border-[#D9D9D9] bg-primary shadow-md">
+          {tabs.map((tab) => (
+            <li
+              key={tab.label}
+              className={`uppercase text-center px-2 md:px-6 py-2 text-xs  md:text-3xl 
+              font-medium md:font-bold transition-colors cursor-pointer ${
+                activeTab === tab.label
+                  ? " text-accent border-b-4 border-accent"
+                  : "text-secondary border-b-4 border-transparent hover:text-accent"
+              } `}
+              onClick={() => handleTabClick(tab)}
+            >
+              {tab.label}
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {/* Nội dung hiển thị */}
       <div className="mt-16">

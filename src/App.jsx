@@ -5,6 +5,8 @@ import MovieCard from "./components/MovieCard";
 import Tabs from "./components/Tabs";
 import Modal from "./components/modal";
 import TabShowtime from "./components/TabShowtime";
+import MovieShowtimes from "./components/MovieShowtime";
+import Showtime from "./pages/Showtime";
 
 const App = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -39,7 +41,7 @@ const App = () => {
       image:
         "https://files.betacorp.vn/media%2fimages%2f2025%2f01%2f15%2f400wx633h%2D4%2D152738%2D150125%2D82.jpg",
       title: "Avengers: Cuộc Chiến Vô Cực",
-      genres: ["Hành động", "Khoa học viễn tưởng"],
+      genres: ["Hành động", "Viễn tưởng"],
       duration: 149,
       ageRating: "T18",
       isHot: true,
@@ -102,7 +104,7 @@ const App = () => {
       image:
         "https://files.betacorp.vn/media%2fimages%2f2025%2f01%2f14%2fposter%2Ddai%2Dchien%2Dnguoi%2Dkhong%2Dlo%2D7%2D134240%2D140125%2D74.jpg",
       title: "Vùng Đất Câm Lặng 2",
-      genres: ["Kinh dị", "Khoa học viễn tưởng"],
+      genres: ["Kinh dị", "Viễn tưởng"],
       duration: 97,
       ageRating: "T16",
       isHot: true,
@@ -185,7 +187,7 @@ const App = () => {
       <ProfileDropdown />
       <ProfileDropdownClient /> */}
 
-      <div className="p-6">
+      {/* <div className="p-6">
         <button
           onClick={() => setOpenModal(true)}
           className="px-4 py-2 bg-green-500 text-white rounded-lg"
@@ -200,14 +202,14 @@ const App = () => {
           title="Lịch chiếu - Phim: Vùng Đất Câm Lặng 2"
           isFooter={false}
         >
-          <TabShowtime />
+          <TabShowtime idMovie={1} />
         </Modal>
       </div>
 
       <div className="hidden md:block">
         <Banner />
       </div>
-      <div className="p-6">
+      <div className="container">
         <Tabs
           tabs={movieTabs}
           defaultTab="PHIM ĐANG CHIẾU"
@@ -215,7 +217,11 @@ const App = () => {
             console.log("Tab changed!", tab);
           }}
         />
-      </div>
+      </div> */}
+
+      {/* <MovieShowtimes /> */}
+
+      <Showtime />
     </div>
   );
 };

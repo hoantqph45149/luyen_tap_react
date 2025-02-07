@@ -1,7 +1,8 @@
 import dayjs from "dayjs";
 import React, { useEffect, useState } from "react";
 
-const TabShowtime = () => {
+const TabShowtime = ({ idMovie }) => {
+  console.log(idMovie);
   const [activeTab, setActiveTab] = useState("");
   const [data, setdata] = useState([]);
   const [showtimes, setShowtime] = useState([]);
@@ -22,9 +23,9 @@ const TabShowtime = () => {
       .catch((err) => console.error("Error fetching showtimes:", err));
   }, []);
 
-  Object.keys(showtimes).map((key) => {
-    console.log(key, showtimes[key]);
-  });
+  // Object.keys(showtimes).map((key) => {
+  //   console.log(key, showtimes[key]);
+  // });
 
   const handleTabClick = (dateId) => {
     setActiveTab(dateId);
@@ -55,7 +56,7 @@ const TabShowtime = () => {
 
       <div className="mt-5">
         {Object.keys(showtimes).map((key) => (
-          <div className="mb-5">
+          <div className="mb-5" key={key}>
             <h2 className="text-lg font-bold">{key}</h2>
             <ul className="pt-3 grid grid-cols-4 gap-3 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10">
               {showtimes[key].map((item, index) => (

@@ -1,14 +1,27 @@
 import { useState } from "react";
 import AnimationPlay from "./AnimationPlay";
 import Modal from "./modal";
+import TabShowtime from "./TabShowtime";
+import { Ticket } from "lucide-react";
 
-const MovieCard = ({ movie }) => {
-  const [openModal, setOpenModal] = useState(false);
+const MovieCard = ({ movie, showInfo = true }) => {
+  const [openModalTrailer, setOpenModalTrailer] = useState(false);
+  const [openModalShowtimes, setOpenModalShowtimes] = useState(false);
+  const [idMovie, setIdMovie] = useState(null);
   return (
     <>
       <Modal
-        isOpen={openModal}
-        onClose={() => setOpenModal(false)}
+        isOpen={openModalShowtimes}
+        onClose={() => setOpenModalShowtimes(false)}
+        onSubmit={() => alert("Submitted!")}
+        title="Lịch chiếu - Phim: Vùng Đất Câm Lặng 2"
+        isFooter={false}
+      >
+        <TabShowtime idMovie={idMovie} />
+      </Modal>
+      <Modal
+        isOpen={openModalTrailer}
+        onClose={() => setOpenModalTrailer(false)}
         onSubmit={() => alert("Submitted!")}
         title="Trailer - Bộ tứ báo thủ"
         isFooter={false}
@@ -33,7 +46,7 @@ const MovieCard = ({ movie }) => {
 
           {/* Play Button */}
           <div
-            onClick={() => setOpenModal(true)()}
+            onClick={() => setOpenModalTrailer(true)()}
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
           >
             <AnimationPlay />
@@ -55,25 +68,39 @@ const MovieCard = ({ movie }) => {
         </div>
 
         {/* Movie Info */}
-        <div>
-          <h3 className="text-lg font-bold text-blue-700 truncate py-3">
-            {movie.title}
-          </h3>
-          <p className="text-sm py-1">
-            <span className="font-bold">Thể loại:</span>{" "}
-            {movie.genres.join(", ")}
-          </p>
-          <p className="text-sm">
-            <span className="font-bold">Thời lượng:</span> {movie.duration} phút
-          </p>
-        </div>
+        {showInfo && (
+          <>
+            <div>
+              <h3 className="text-lg font-bold text-accent truncate py-3 font-oswald">
+                {movie.title}
+              </h3>
+              <p className="text-sm py-1 font-lato">
+                <span className="font-bold">Thể loại:</span>{" "}
+                {movie.genres.join(", ")}
+              </p>
+              <p className="text-sm font-lato">
+                <span className="font-bold">Thời lượng:</span> {movie.duration}{" "}
+                phút
+              </p>
+            </div>
 
-        {/* Buy Ticket Button */}
-        <div className="py-4">
-          <button className="w-full bg-gradient-to-r from-[#0a64a7] via-[#258dcf] to-[#3db1f3] bg-[length:200%_auto] text-white font-bold py-2 rounded-md hover:opacity-90 transition">
-            MUA VÉ
-          </button>
-        </div>
+            {/* Buy Ticket Button */}
+            <div className="py-4">
+              <button
+                onClick={() => {
+                  setIdMovie(movie.title);
+                  setOpenModalShowtimes(true);
+                }}
+                className="relative w-full bg-gradient-to-r from-[#0a64a7] via-[#258dcf] to-[#3db1f3] bg-[length:200%_auto] text-white font-bold py-2 rounded-md hover:opacity-90 transition"
+              >
+                <span className="absolute top-1/2 left-2 transform -translate-y-1/2 -rotate-45 opacity-50">
+                  <Ticket size={50} strokeWidth={3} />
+                </span>
+                MUA VÉ
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

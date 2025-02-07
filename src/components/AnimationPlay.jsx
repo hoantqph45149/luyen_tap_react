@@ -1,4 +1,5 @@
 import React from "react";
+import { FaPlayCircle } from "react-icons/fa";
 
 const AnimationPlay = () => {
   return (
@@ -7,11 +8,10 @@ const AnimationPlay = () => {
       <div className="absolute w-full h-full bg-[#e1e1e199] rounded-full animate-ping"></div>
 
       {/* Hình ảnh play video */}
-      <img
-        src="playvideo.png"
-        alt="videoplay"
-        className="relative z-10 w-[80%] h-[80%] bg-secondary rounded-full"
-      />
+
+      <div className="relative  w-[80%] h-[80%] rounded-full">
+        <FaPlayCircle className="w-full h-full text-white" />
+      </div>
     </div>
   );
 };
