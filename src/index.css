@@ -16,6 +16,11 @@ body {
 
 @layer utilities {
   /* Ẩn thanh cuộn nhưng vẫn có thể cuộn */
+  tr,
+  th,
+  td {
+    padding: 0;
+  }
   .scrollbar-hidden::-webkit-scrollbar {
     display: none;
   }
